@@ -2,7 +2,6 @@ import { useItem } from '../hooks/useItem';
 import type { Category, Item, Character, Episode, Location } from '../types';
 import { unstable_ViewTransition as ViewTransition } from 'react';
 
-// Type guards
 function isCharacter(item: Item): item is Character {
   return 'image' in item;
 }
