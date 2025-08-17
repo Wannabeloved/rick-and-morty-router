@@ -12,7 +12,7 @@ function isLocation(item: Item): item is Location {
 }
 
 function isEpisode(item: Item): item is Episode {
-  return 'episode' in item;
+  return 'episode' in item && 'air_date' in item;
 }
 
 interface ItemCardProps {
