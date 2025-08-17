@@ -3,14 +3,15 @@ import { use } from 'react';
 import { getItem } from '../api';
 import type { Category, Item } from '../types';
 
-const cache = new Map<Category, Promise<Item>>();
+const cache = new Map<string, Promise<Item>>();
 
 export const useItem = (category: Category, id: string): Item => {
-    let itemsPromise = cache.get(category);
+    const cacheKey = `${category}-${id}`;
+    let itemsPromise = cache.get(cacheKey);
     
     if (!itemsPromise) {
       itemsPromise = getItem(category, id);
-      cache.set(category, itemsPromise);
+      cache.set(cacheKey, itemsPromise);
     }
   
     return use(itemsPromise);
