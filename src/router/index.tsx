@@ -4,7 +4,10 @@ import { Layout } from '../components/Layout';
 import { HomePage } from '../pages/HomePage';
 import { ItemsListPage } from '../pages/ItemsListPage';
 import { ItemDetailPage } from '../pages/ItemDetailPage';
-import { NotFoundPage } from '../pages/NotFoundPage'; // New import
+import { NotFoundPage } from '../pages/NotFoundPage';
+import { LoginPage } from '../pages/LoginPage';
+import { SignupPage } from '../pages/SignupPage';
+import { ProtectedRoute } from '../components/ProtectedRoute';
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +19,14 @@ export const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
+        path: 'login',
+        element: <LoginPage />,
+      },
+      {
+        path: 'signup',
+        element: <SignupPage />,
+      },
+      {
         path: ':category',
         element: <ItemsListPage />,
         errorElement: <NotFoundPage />,
@@ -25,7 +36,7 @@ export const router = createBrowserRouter([
         element: <ItemDetailPage />,
         errorElement: <NotFoundPage />,
       },
-      { // New 404 route
+      {
         path: '*',
         element: <NotFoundPage />,
       },
