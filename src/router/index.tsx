@@ -28,12 +28,20 @@ export const router = createBrowserRouter([
       },
       {
         path: ':category',
-        element: <ItemsListPage />,
+        element: (
+          <ProtectedRoute>
+            <ItemsListPage />
+          </ProtectedRoute>
+        ),
         errorElement: <NotFoundPage />,
       },
       {
         path: ':category/:id',
-        element: <ItemDetailPage />,
+        element: (
+          <ProtectedRoute>
+            <ItemDetailPage />
+          </ProtectedRoute>
+        ),
         errorElement: <NotFoundPage />,
       },
       {
