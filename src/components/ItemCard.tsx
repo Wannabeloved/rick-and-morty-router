@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { unstable_ViewTransition as ViewTransition } from 'react';
+import type { RefAttributes } from 'react';
 import type { Item, Category, Character, Location, Episode } from '../types';
 
 // Type guards
@@ -15,16 +16,17 @@ function isEpisode(item: Item): item is Episode {
   return 'episode' in item && 'air_date' in item;
 }
 
-interface ItemCardProps {
+interface ItemCardProps extends RefAttributes<HTMLElement> {
   item: Item;
   category: Category;
 }
 
-export const ItemCard = ({ item, category }: ItemCardProps) => {
+export const ItemCard = ({ item, category, ...rest }: ItemCardProps) => {
   return (
     <Link
       to={`/${category}/${item.id}`}
       className="block bg-gray-800 rounded-lg shadow-lg hover:bg-gray-700 transition-all duration-200 ease-in-out transform hover:-translate-y-1"
+      {...rest}
     >
       {isCharacter(item) && (
         <ViewTransition name={`character-image-${item.id}`}>
