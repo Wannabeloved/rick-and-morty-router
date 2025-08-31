@@ -1,5 +1,7 @@
 
-import { Link } from 'react-router';
+import { Button } from '@heroui/button';
+import { Link } from '@heroui/link';
+// import { Link } from 'react-router';
 
 export const HomePage = () => {
   return (
@@ -13,8 +15,8 @@ export const HomePage = () => {
       <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
         Dive into the multiverse. Explore detailed information about all the characters, locations, and episodes from the show.
       </p>
-      <div className="flex flex-wrap justify-center gap-4">
-        <Link to="/characters" className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105">
+      <div className="mb-3 flex flex-wrap justify-center gap-4">
+        {/* <Link to="/characters" className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105">
           Explore Characters
         </Link>
         <Link to="/locations" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105">
@@ -22,7 +24,22 @@ export const HomePage = () => {
         </Link>
         <Link to="/episodes" className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105">
           View Episodes
-        </Link>
+        </Link> */}
+        <Button 
+          as={Link}
+          href="/characters"
+          color="success"
+        >Explore Characters</Button>
+        <Button 
+          as={Link}
+          href="/locations"
+          color="primary"
+        >Discover Locations</Button>
+        <Button 
+          as={Link}
+          href="/episodes"
+          color="secondary"
+        >View Episodes</Button>
       </div>
     </div>
   );

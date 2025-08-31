@@ -4,9 +4,9 @@ import { router } from './router';
 
 function App() {
   return (
-    <ViewTransition>
-      <RouterProvider router={router} />
-    </ViewTransition>
+      <ViewTransition>
+        <RouterProvider router={router} />
+      </ViewTransition>
   )
 }
 
