@@ -7,7 +7,7 @@ export const Layout = () => {
     <Providers>
       <div className="min-h-screen bg-gray-900 text-white">
         <NavigationBar />
-        <main className="container mx-auto p-4">
+        <main className="container mx-auto p-4 dark">
           <Outlet />
         </main>
       </div>
