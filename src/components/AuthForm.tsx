@@ -1,3 +1,4 @@
+import { Button } from '@heroui/button';
 import React, { useState } from 'react';
 
 interface Field {
@@ -54,12 +55,12 @@ export const AuthForm: React.FC<AuthFormProps> = ({ title, buttonText, fields, o
               />
             </div>
           ))}
-          <button
+          <Button
             type="submit"
-            className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors duration-200"
+            color="secondary"
           >
             {buttonText}
-          </button>
+          </Button>
         </form>
       </div>
     </div>

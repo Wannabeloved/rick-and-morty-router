@@ -1,4 +1,5 @@
-import { Link } from 'react-router';
+import { Link } from '@heroui/link';
+
 import { unstable_ViewTransition as ViewTransition } from 'react';
 import type { RefAttributes } from 'react';
 import type { Item, Category, Character, Location, Episode } from '../types';
@@ -16,7 +17,7 @@ function isEpisode(item: Item): item is Episode {
   return 'episode' in item && 'air_date' in item;
 }
 
-interface ItemCardProps extends RefAttributes<HTMLElement> {
+interface ItemCardProps extends RefAttributes<HTMLAnchorElement> {
   item: Item;
   category: Category;
 }
@@ -24,7 +25,7 @@ interface ItemCardProps extends RefAttributes<HTMLElement> {
 export const ItemCard = ({ item, category, ...rest }: ItemCardProps) => {
   return (
     <Link
-      to={`/${category}/${item.id}`}
+      href={`/${category}/${item.id}`}
       className="block bg-gray-800 rounded-lg shadow-lg hover:bg-gray-700 transition-all duration-200 ease-in-out transform hover:-translate-y-1"
       {...rest}
     >
