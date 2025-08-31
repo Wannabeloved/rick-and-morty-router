@@ -1,7 +1,7 @@
 
 import { Button } from '@heroui/button';
-import { Link } from '@heroui/link';
-// import { Link } from 'react-router';
+import { Link } from 'react-router';
+// import { Link } from '@heroui/link';
 
 export const HomePage = () => {
   return (
@@ -27,17 +27,17 @@ export const HomePage = () => {
         </Link> */}
         <Button 
           as={Link}
-          href="/characters"
+          to="/characters"
           color="success"
         >Explore Characters</Button>
         <Button 
           as={Link}
-          href="/locations"
+          to="/locations"
           color="primary"
         >Discover Locations</Button>
         <Button 
           as={Link}
-          href="/episodes"
+          to="/episodes"
           color="secondary"
         >View Episodes</Button>
       </div>

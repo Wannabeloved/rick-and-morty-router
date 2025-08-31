@@ -20,7 +20,7 @@ export function NavigationBar() {
           <li key={link.path} className="content-center">
             <Link
               as={NavLink}
-              href={link.path}
+              to={link.path}
               size="lg"
               isBlock
               color={pathname === link.path ? "success" : "primary"}
@@ -44,21 +44,19 @@ function AuthButtons() {
     <div className="flex space-x-4">
       {isLoggedIn ? (
             <Button 
-
               onPress={logout}
-              href="/login"
               color="primary"
             >Signout</Button>
         ) : (
           <>
               <Button 
-                as={Link}
-                href="/login"
+                as={NavLink}
+                to="/login"
                 color="primary"
               >Login</Button>
               <Button 
-                as={Link}
-                href="/signup"
+                as={NavLink}
+                to="/signup"
                 color="primary"
               >Signup</Button>
           </>
