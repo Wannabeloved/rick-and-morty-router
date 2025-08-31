@@ -1,6 +1,7 @@
 import { useItem } from '../hooks/useItem';
 import type { Category, Item, Character, Episode, Location } from '../types';
 import { unstable_ViewTransition as ViewTransition } from 'react';
+import { routesMap } from '../utils';
 
 function isCharacter(item: Item): item is Character {
   return 'image' in item;
@@ -23,7 +24,7 @@ const DetailItem = ({ label, value }: { label: string; value: string }) => (
 
 export const ItemDetailContent = ({ category, id }: { category: Category; id: string }) => {
 
-  const item = useItem(category, id);
+  const item = useItem(routesMap[category], id);
 
   return (
     <div className="bg-gray-800 shadow-xl rounded-lg p-4 sm:p-6 md:p-8 max-w-4xl mx-auto">

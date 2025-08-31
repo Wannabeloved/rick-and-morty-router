@@ -4,13 +4,14 @@ import type { Category, PaginatedResponse } from '../../types';
 import { ItemCard } from '../ItemCard';
 import { Spinner } from '../Spinner';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import { routesMap } from '../../utils';
 
 type ItemsListContentProps = {
   category: Category;
 };
 export function ItemsListContent<T extends Category>({ category }: { category: T }) {
   const [history, setHistory] = useState<PaginatedResponse<T>[]>([]);
-  const [items, nextItems] = useItems(category, news => 
+  const [items, nextItems] = useItems(routesMap[category], news => 
     (console.log('setHistory', news), setHistory(currents => [...currents, news])),
   );
 

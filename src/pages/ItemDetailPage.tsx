@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { Spinner } from '../components/Spinner';
 import { ItemDetailContent } from '../components/ItemDetailContent';
 import type { Category } from '../types';
-import { isValidCategory } from '../utils';
+import { isValidCategory, routesMap } from '../utils';
 
 export const ItemDetailPage = () => {
   const { category, id } = useParams<{ category: Category; id: string }>();
