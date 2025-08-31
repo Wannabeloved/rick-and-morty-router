@@ -6,6 +6,7 @@ import type { Item, Category, Character, Location, Episode } from '../types';
 import { Link as NavLink } from 'react-router';
 import { Card, CardBody, CardFooter, CardHeader } from '@heroui/card';
 import { Image } from '@heroui/image';
+import { Spacer } from '@heroui/spacer';
 
 // Type guards
 function isCharacter(item: Item): item is Character {
@@ -33,7 +34,7 @@ export const ItemCard = ({ item, category, ...rest }: ItemCardProps) => {
       shadow="sm"
       {...rest}
     >
-      <CardBody className="overflow-visible p-0">
+      <CardBody className="overflow-visible p-0 text-center">
         {isCharacter(item) && (
           <ViewTransition name={`character-image-${item.id}`}>
             <Image
@@ -45,17 +46,18 @@ export const ItemCard = ({ item, category, ...rest }: ItemCardProps) => {
             />
           </ViewTransition>
         )}
-      </CardBody>
-      <CardFooter className="p-4 flex-col">
+        <Spacer y={2} />
         <Link 
           as="h2" 
           underline="hover" 
           color="warning" 
           size="lg"
-          className="font-bold"
+          className="inline-block font-bold"
         >
           {item.name}
         </Link>
+      </CardBody>
+      <CardFooter className="p-4 pt-2 flex-col">
         {isCharacter(item) && (
           <p className="text-sm text-gray-300">
             {item.species} - {item.status}
