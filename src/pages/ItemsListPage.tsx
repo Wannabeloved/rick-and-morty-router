@@ -24,7 +24,7 @@ export const ItemsListPage = () => {
   return (
     <div>
       <h1 className="text-3xl font-bold capitalize mb-6 text-center">{category}</h1>
-      <ItemsListContent category={validCategory} />
+      <ItemsListContent key={category} category={validCategory} />
     </div>
   );
 };
