@@ -3,6 +3,9 @@ import { Link } from '@heroui/link';
 import { unstable_ViewTransition as ViewTransition } from 'react';
 import type { RefAttributes } from 'react';
 import type { Item, Category, Character, Location, Episode } from '../types';
+import { Link as NavLink } from 'react-router';
+import { Card, CardBody, CardFooter, CardHeader } from '@heroui/card';
+import { Image } from '@heroui/image';
 
 // Type guards
 function isCharacter(item: Item): item is Character {
@@ -24,22 +27,35 @@ interface ItemCardProps extends RefAttributes<HTMLAnchorElement> {
 
 export const ItemCard = ({ item, category, ...rest }: ItemCardProps) => {
   return (
-    <Link
-      href={`/${category}/${item.id}`}
-      className="block bg-gray-800 rounded-lg shadow-lg hover:bg-gray-700 transition-all duration-200 ease-in-out transform hover:-translate-y-1"
+    <Card
+      as={NavLink}
+      to={`/${category}/${item.id}`}
+      shadow="sm"
       {...rest}
     >
-      {isCharacter(item) && (
-        <ViewTransition name={`character-image-${item.id}`}>
-          <img
-            src={item.image}
-            alt={item.name}
-            className="w-full h-48 object-cover rounded-t-lg"
-          />
-        </ViewTransition>
-      )}
-      <div className="p-4">
-        <h2 className="text-xl font-bold text-yellow-400">{item.name}</h2>
+      <CardBody className="overflow-visible p-0">
+        {isCharacter(item) && (
+          <ViewTransition name={`character-image-${item.id}`}>
+            <Image
+              src={item.image}
+              alt={item.name}
+              className="w-full h-48 object-cover"
+              width="100%"
+              shadow="sm"
+            />
+          </ViewTransition>
+        )}
+      </CardBody>
+      <CardFooter className="p-4 flex-col">
+        <Link 
+          as="h2" 
+          underline="hover" 
+          color="warning" 
+          size="lg"
+          className="font-bold"
+        >
+          {item.name}
+        </Link>
         {isCharacter(item) && (
           <p className="text-sm text-gray-300">
             {item.species} - {item.status}
@@ -51,7 +67,7 @@ export const ItemCard = ({ item, category, ...rest }: ItemCardProps) => {
         {isEpisode(item) && (
           <p className="text-sm text-gray-300">{item.episode}</p>
         )}
-      </div>
-    </Link>
+      </CardFooter>
+    </Card>
   );
 };
