@@ -20,6 +20,7 @@
     "@heroui/spinner": "^2.2.22",
     "@heroui/system": "^2.4.21",
     "@heroui/theme": "^2.4.21",
+    "@heroui/tooltip": "^2.2.22",
     "@tailwindcss/vite": "^4.1.12",
     "framer-motion": "^12.23.12",
     "react": "0.0.0-experimental-a96a0f39-20250815",

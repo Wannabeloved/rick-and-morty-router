@@ -1,23 +1,32 @@
 
 import { Button } from '@heroui/button';
 import { Link } from 'react-router';
-// import { Link } from '@heroui/link';
+import { Link as UILink } from '@heroui/link';
 import { Avatar, AvatarIcon } from '@heroui/avatar';
 import { Image } from '@heroui/image';
 import { Spacer } from '@heroui/spacer';
 import { useAuthorInfo } from '../context/AuthorContext';
+import { Tooltip } from '@heroui/tooltip';
 
 const AuthorAvatar = () => {
   const info = useAuthorInfo();
   return (
-    <Avatar 
-      src={info.avatar_url}
-      name={info.name}
-      as="a"
-      href={info.html_url}
-      // fallback={<AvatarIcon />}
-      className="w-30 h-30 text-large"
-    />
+    <Tooltip 
+      content="Wubba Lubba Dub-Dub!" 
+      placement="top-start"
+      showArrow
+      delay={230}
+    >
+      <Avatar 
+        src={info?.avatar_url}
+        name={info?.login}
+        as={UILink}
+        isExternal
+        href={info?.html_url}
+        fallback={<AvatarIcon />}
+        className="w-30 h-30 text-large"
+      />
+    </Tooltip>
   );
 };
 export const HomePage = () => {
