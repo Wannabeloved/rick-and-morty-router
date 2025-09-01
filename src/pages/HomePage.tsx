@@ -40,7 +40,7 @@ export const HomePage = () => {
         <Image 
           src="https://upload.wikimedia.org/wikipedia/commons/archive/b/b1/20220319060843%21Rick_and_Morty.svg"
           className="object-cover"
-          height={100}
+          height={110}
         />
       </h1>
       <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
