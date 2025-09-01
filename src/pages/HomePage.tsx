@@ -1,6 +1,6 @@
 
 import { Button } from '@heroui/button';
-import { Link } from 'react-router';
+import { Link as NavLink } from 'react-router';
 import { Link as UILink } from '@heroui/link';
 import { Avatar, AvatarIcon } from '@heroui/avatar';
 import { Image } from '@heroui/image';
@@ -48,17 +48,17 @@ export const HomePage = () => {
       </p>
       <div className="mb-3 flex flex-wrap justify-center gap-4">
         <Button 
-          as={Link}
+          as={NavLink}
           to="/characters"
           color="success"
         >Explore Characters</Button>
         <Button 
-          as={Link}
+          as={NavLink}
           to="/locations"
           color="primary"
         >Discover Locations</Button>
         <Button 
-          as={Link}
+          as={NavLink}
           to="/episodes"
           color="secondary"
         >View Episodes</Button>
