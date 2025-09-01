@@ -1,4 +1,4 @@
-import { usePreviousPath } from '../context/PreviousPathContext';
+import { usePreviousPath } from "../hooks/usePreviousPath";
 import { Link } from '@heroui/link';
 
 export const NotFoundPage = () => {

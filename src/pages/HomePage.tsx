@@ -5,7 +5,7 @@ import { Link as UILink } from '@heroui/link';
 import { Avatar, AvatarIcon } from '@heroui/avatar';
 import { Image } from '@heroui/image';
 import { Spacer } from '@heroui/spacer';
-import { useAuthorInfo } from '../context/AuthorContext';
+import { useAuthorInfo } from '../hooks/useAuthorInfo';
 import { Tooltip } from '@heroui/tooltip';
 
 const AuthorAvatar = () => {

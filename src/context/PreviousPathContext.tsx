@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
+import React, { createContext, useState, useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router';
 
 type PreviousPathContextType = {
@@ -6,7 +6,7 @@ type PreviousPathContextType = {
     previousPath: string | null, 
   };
 
-const PreviousPathContext = createContext<PreviousPathContextType | null>(null);
+export const PreviousPathContext = createContext<PreviousPathContextType | null>(null);
 
 class PathQueue {
   private paths: string[] = [];
@@ -56,12 +56,4 @@ export const PreviousPathProvider = ({ children }: { children: React.ReactNode }
       {children}
     </PreviousPathContext>
   );
-};
-
-export const usePreviousPath = () => {
-  const context = useContext(PreviousPathContext);
-  if (context === null) {
-    throw new Error('usePreviousPath must be used within a PreviousPathProviderr');
-  }
-  return context;
 };

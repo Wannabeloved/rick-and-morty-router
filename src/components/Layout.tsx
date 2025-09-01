@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router';
 import { NavigationBar } from './NavigationBar';
-import { Providers } from '../../providers/index';
+import { Providers } from '../context/index';
 
 export const Layout = () => {
   return (
