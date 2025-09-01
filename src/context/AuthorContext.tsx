@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useMemo, use } from 'react';
+import React, { createContext, useState, useEffect, use } from 'react';
 
 type AuthorContextType = {
   login: string;
@@ -11,7 +11,7 @@ type AuthorContextType = {
   avatar_url: string;
 };
 
-const AuthorContext = createContext<AuthorContextType | null>(null);
+export const AuthorContext = createContext<AuthorContextType | null>(null);
 
 export const AuthorProvider = ({ children }: { children: React.ReactNode }) => {
   const [authorInfo, setAuthorInfo] = useState<AuthorContextType | null>(null);
@@ -31,10 +31,3 @@ export const AuthorProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export const useAuthorInfo = () => {
-  if (AuthorContext === null)
-    throw new Error('useAuthorInfo must be used within a AuthorProvider');
-  const context = use(AuthorContext);
-
-  return context;
-};

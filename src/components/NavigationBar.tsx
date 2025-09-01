@@ -1,6 +1,6 @@
 
 import { NavLink, useLocation } from 'react-router';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../hooks/useAuth';
 import { Link } from '@heroui/link';
 import { Button } from '@heroui/button';
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@heroui/navbar';
