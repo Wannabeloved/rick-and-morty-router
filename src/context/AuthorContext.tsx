@@ -1,17 +1,25 @@
 import React, { createContext, useContext, useState, useEffect, useMemo, use } from 'react';
 
 type AuthorContextType = {
-    
+  login: string;
+  name: string;
+  html_url: string;
+  public_repos: number;
+  followers: number;
+  following: number;
+  created_at: string;
+  avatar_url: string;
 };
 
 const AuthorContext = createContext<AuthorContextType | null>(null);
 
 export const AuthorProvider = ({ children }: { children: React.ReactNode }) => {
-  const [authorInfo, setAuthorInfo] = useState<AuthorContextType>({});
+  const [authorInfo, setAuthorInfo] = useState<AuthorContextType | null>(null);
 
-    useEffect(() => {
-        const mygh = fetch("https://api.github.com/users/wannabeloved")
-  .then(($) => $.json()).then($ => setAuthorInfo($));
+  useEffect(() => {
+    fetch('https://api.github.com/users/wannabeloved')
+      .then(res => res.json())
+      .then(setAuthorInfo);
 
         return () => {};
     }, []);
@@ -24,9 +32,9 @@ export const AuthorProvider = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const useAuthorInfo = () => {
-  const context = use(AuthorContext);
-  if (context === null)
+  if (AuthorContext === null)
     throw new Error('useAuthorInfo must be used within a AuthorProvider');
+  const context = use(AuthorContext);
 
   return context;
 };
