@@ -1,12 +1,9 @@
 import { RouterProvider } from 'react-router';
-import {unstable_ViewTransition as ViewTransition} from 'react';
-import { router } from './router';
+import { router } from './pages';
 
 function App() {
-  return (
-      <ViewTransition>
-        <RouterProvider router={router} />
-      </ViewTransition>
+  return (   
+    <RouterProvider router={router} />  
   )
 }
 
