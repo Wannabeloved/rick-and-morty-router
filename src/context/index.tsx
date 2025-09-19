@@ -4,6 +4,7 @@ import { PreviousPathProvider } from './PreviousPathContext';
 import { AuthorProvider } from './AuthorContext';
 import { UIProvider } from './UiContext';
 import {unstable_ViewTransition as ViewTransition} from 'react';
+import { ServiceWorkerProvider } from './ServiceWorkerContext';
 
 declare module "@react-types/shared" {
   interface RouterConfig {
@@ -17,16 +18,18 @@ type Props = {
 
 export const Providers = ({ children }: Props) => {
   return (
-    <AuthorProvider>
-      <ViewTransition>
-        <UIProvider>
-          <AuthProvider>
-            <PreviousPathProvider>
-                { children }
-            </PreviousPathProvider>
-          </AuthProvider>
-        </UIProvider>
-      </ViewTransition>
-    </AuthorProvider>
+    <ServiceWorkerProvider>
+      <AuthorProvider>
+        <ViewTransition>
+          <UIProvider>
+            <AuthProvider>
+              <PreviousPathProvider>
+                  { children }
+              </PreviousPathProvider>
+            </AuthProvider>
+          </UIProvider>
+        </ViewTransition>
+      </AuthorProvider>
+    </ServiceWorkerProvider>
   );
 };
