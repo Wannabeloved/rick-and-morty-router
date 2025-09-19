@@ -1,5 +1,5 @@
 
-import { NavLink, useLocation } from 'react-router';
+import { NavLink, useLocation, useNavigation } from 'react-router';
 import { useAuth } from '../hooks/useAuth';
 import { Link } from '@heroui/link';
 import { Button } from '@heroui/button';
@@ -26,6 +26,7 @@ export const AcmeLogo = () => {
 
 export function NavigationBar() {
   const { pathname } = useLocation();
+  const navigation = useNavigation();
   return (
     <Navbar shouldHideOnScroll>
       <NavbarBrand>
@@ -39,7 +40,13 @@ export function NavigationBar() {
               to={link.path}
               size="lg"
               isBlock
-              color={pathname === link.path ? "success" : "primary"}
+              color={pathname === link.path ? 
+                "success" : 
+                navigation.location?.pathname === link.path ? 
+                  "foreground" :
+                  "primary"
+              }
+              className="transition-colors-opacity"
             >
               {link.label}
             </Link>
@@ -55,8 +62,6 @@ export function NavigationBar() {
 
 function AuthButtons() {
   const { isLoggedIn, logout } = useAuth();
-
-  // const buttonClasses = "bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-transform transform hover:scale-105";
 
   return (
     <>
